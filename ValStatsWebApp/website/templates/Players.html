@@ -1,0 +1,65 @@
+{% extends "base.html" %} {% block title %}Valorant Stats-Players{% endblock %}
+
+{% block content %}
+<form method="POST">
+    <h3 align="center">Search for an Esports Player</h3>
+    <div class="form-group">
+        <input type="playerName" class="form-control" placeholder="Search for a Valorant Player" id="playerName" name="playerName"/>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<style>
+    td{
+        width: 150px;
+        text-align: center;
+        border: 1px solid black;
+        padding: 5px
+    }
+</style>
+<div>
+<h3 align="center">Player</h3>
+<table align="center">
+    <thead>
+    <th>Esport Name</th>
+    <th>Age</th>
+    <th>Country</th>
+    <th>Team Name</th>
+    <th>Winnings</th>
+    </thead>
+    <tbody>
+        {% for row in data %}
+            <tr>
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td>{{row[2]}}</td>
+                <td>{{row[3]}}</td>
+                <td>{{row[4]}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% if data2 != 0 %}
+    <div>
+    <h3 align="center">Most Played Agents</h3>
+    <table align="center">
+        <thead>
+        <th>Agent Name</th>
+        <th>K/D</th>
+        <th>Average Score</th>
+        </thead>
+        <tbody>
+            {% for row in data2 %}
+                <tr>
+                    <td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endif %}
+{% endblock %}
